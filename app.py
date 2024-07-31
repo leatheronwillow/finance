@@ -405,3 +405,9 @@ def sell():
         user_id = session["user_id"]
         portfolio = query_db("SELECT * from portfolio WHERE user_id = ?", [user_id])
         return render_template("sell.html", portfolio=portfolio)
+    
+if __name__ == '__main__':
+    app.run(
+    debug=False, # Optional but useful for now
+    host="0.0.0.0" # Listen for connections directed _to_ any address
+    )   

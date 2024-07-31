@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Stock</th>
+                <th scope="col">Shares Owned</th>
+                <th scope="col">Price</th>
+                <th scope="col">Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for stock in portfolio %}
+            <tr>
+                <th scope="row">{{stock.symbol}}</th>
+                <td>{{stock.shares_owned}}</td>
+                <td>{{stock.price | usd}}</td>
+                <td>{{stock.total_value | usd}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td></td>
+                <td></td>
+                <th scope="row">Cash</th>
+                <td>{{cash | usd}}</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <th scope="row">Grand Total</th>
+                <td>{{grand_total | usd}}</td>
+            </tr>
+        </tfoot>
+    </table>
+    <form action="/" method="post">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="add_cash" name="add_cash" placeholder="Add Cash" type="number" min="0.01" step="0.01" required>
+        </div>
+        <button class="btn btn-primary" type="submit">Add</button>
+    </form>
+{% endblock %}

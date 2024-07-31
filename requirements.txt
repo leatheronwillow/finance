@@ -1,4 +1,4 @@
-cs50
-Flask
-Flask-Session
-requests
+Flask==3.0.3
+python-dotenv==1.0.1
+Requests==2.32.3
+Werkzeug==3.0.3
